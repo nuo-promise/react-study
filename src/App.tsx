@@ -3,6 +3,7 @@ import Counter from './Counter';
 import Timer from './Timer';
 import StateTimer from './StateTimer'
 import './App.css';
+import MyCounter from './MyCounter';
 
 type styleTypeProps = {
   foreground?: string;
@@ -41,9 +42,18 @@ function App() {
         <ThemeContext.Provider value={themes[theme]}>
           <button onClick={handleChangeTheme} >切换主题</button>
           <Toolbar />
+          <p>----------------------</p>
+          <br />
           <StateTimer title={'林婉儿'} />
+          <p>----------------------</p>
+          <br />
           <Timer title={'庆余年'} />
+          <p>----------------------</p>
+          <br />
           <Counter />
+          <p>----------------------</p>
+          <br />
+          <MyCounter title={"自定义Hooks"} step={10} />
         </ThemeContext.Provider>
       </header>
     </div>
