@@ -1,17 +1,18 @@
 import React, { useState, useCallback, useContext } from 'react';
 import Counter from './Counter';
 import Timer from './Timer';
-import StateTimer from './StateTimer'
+import StateTimer from './StateTimer';
 import './App.css';
 import MyCounter from './MyCounter';
+import RCD from './ReduxCounter';
 
 type styleTypeProps = {
   foreground?: string;
-  background?: string
+  background?: string;
 };
 
 type themesProps = {
-  [propName: string]: styleTypeProps
+  [propName: string]: styleTypeProps;
 };
 
 const themes: themesProps = {
@@ -28,19 +29,18 @@ const themes: themesProps = {
 const ThemeContext = React.createContext(themes.light);
 
 function App() {
-
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
 
   const handleChangeTheme = useCallback(() => {
-    setTheme((theme) => (theme === "light" ? "dark" : "light"));
-  }, [])
+    setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Hello React Typescript!</h1>
         <ThemeContext.Provider value={themes[theme]}>
-          <button onClick={handleChangeTheme} >切换主题</button>
+          <button onClick={handleChangeTheme}>切换主题</button>
           <Toolbar />
           <p>----------------------</p>
           <br />
@@ -53,7 +53,10 @@ function App() {
           <Counter />
           <p>----------------------</p>
           <br />
-          <MyCounter title={"自定义Hooks"} step={10} />
+          <MyCounter title={'自定义Hooks'} step={10} />
+          <p>----------------------</p>
+          <br />
+          <RCD />
         </ThemeContext.Provider>
       </header>
     </div>
@@ -72,10 +75,12 @@ function ThemedButton() {
   const theme = useContext(ThemeContext);
 
   return (
-    <button style={{
-      background: theme.background,
-      color: theme.foreground
-    }}>
+    <button
+      style={{
+        background: theme.background,
+        color: theme.foreground
+      }}
+    >
       I am styled by theme context!
     </button>
   );
