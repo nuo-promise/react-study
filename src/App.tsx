@@ -5,6 +5,11 @@ import StateTimer from './StateTimer';
 import './App.css';
 import MyCounter from './MyCounter';
 import RCD from './ReduxCounter';
+import CounterRenderProps from './CounterRenderProps';
+import KeyPress from './KeyPress';
+import MyForm from './MyForm';
+import MyResetText from './MyResetText';
+import Tiptap from './Tiptap';
 
 type styleTypeProps = {
   foreground?: string;
@@ -40,6 +45,9 @@ function App() {
       <header className="App-header">
         <h1>Hello React Typescript!</h1>
         <ThemeContext.Provider value={themes[theme]}>
+          <Tiptap />
+          <MyResetText />
+          <MyForm />
           <button onClick={handleChangeTheme}>切换主题</button>
           <Toolbar />
           <p>----------------------</p>
@@ -57,6 +65,8 @@ function App() {
           <p>----------------------</p>
           <br />
           <RCD />
+          <CounterRenderProps />
+          <KeyPress />
         </ThemeContext.Provider>
       </header>
     </div>
