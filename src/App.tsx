@@ -2,7 +2,6 @@ import React, { useState, useCallback, useContext } from 'react';
 import Counter from './Counter';
 import Timer from './Timer';
 import StateTimer from './StateTimer';
-import './App.css';
 import MyCounter from './MyCounter';
 import RCD from './ReduxCounter';
 import CounterRenderProps from './CounterRenderProps';
@@ -41,11 +40,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello React Typescript!</h1>
+    <div>
+      <header></header>
+      <body>
+        <h1 className="text-3xl font-bold underline">
+          Hello React Typescript!
+        </h1>
+        <Tiptap />
         <ThemeContext.Provider value={themes[theme]}>
-          <Tiptap />
           <MyResetText />
           <MyForm />
           <button onClick={handleChangeTheme}>切换主题</button>
@@ -68,11 +70,10 @@ function App() {
           <CounterRenderProps />
           <KeyPress />
         </ThemeContext.Provider>
-      </header>
+      </body>
     </div>
   );
 }
-
 function Toolbar() {
   return (
     <div>
@@ -95,5 +96,4 @@ function ThemedButton() {
     </button>
   );
 }
-
 export default App;
